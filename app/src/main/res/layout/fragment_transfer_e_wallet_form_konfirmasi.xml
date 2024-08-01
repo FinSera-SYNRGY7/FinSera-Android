@@ -18,7 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back_button"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/btn_back"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,7 +27,8 @@
             android:layout_centerInParent="true"
             android:text="@string/konfirmasi_transaksi"
             android:textColor="@color/neutral_09"
-            android:textSize="26sp" />
+            android:textSize="26sp"
+            android:contentDescription="@string/konfirmasi_transaksi"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -41,7 +43,8 @@
             android:layout_height="wrap_content"
             android:text="E-Wallet"
             android:textColor="@color/neutral_09"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:contentDescription="@string/e_wallet"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,7 +54,8 @@
             android:textStyle="bold"
             android:id="@+id/tvJenisEWallet"
             android:textColor="@color/neutral_09"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:contentDescription="@string/gopay"/>
 
     </RelativeLayout>
 
@@ -65,9 +69,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama Pengguna"
+            android:text="@string/nama_pengguna"
             android:textColor="@color/neutral_09"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:contentDescription="@string/nama_pengguna"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -77,7 +82,8 @@
             android:textStyle="bold"
             android:id="@+id/tvNamaPengguna"
             android:textColor="@color/neutral_09"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:contentDescription="@string/username"/>
 
     </RelativeLayout>
 
@@ -91,19 +97,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No.Handphone E-Wallet"
+            android:text="@string/nomor_e_wallet"
             android:textColor="@color/neutral_09"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:contentDescription="@string/nomor_e_wallet"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="1234567890"
+            android:text="@string/nomor_e_wallet_user"
             android:textStyle="bold"
             android:id="@+id/tvNomorEWallet"
             android:textColor="@color/neutral_09"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:contentDescription="@string/nomor_e_wallet_user"/>
 
     </RelativeLayout>
 
@@ -121,7 +129,8 @@
             android:text="@string/nominal"
             android:textSize="16sp"
             android:textColor="@color/neutral_09"
-            android:layout_marginTop="32dp"/>
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/nominal"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etNominal"
@@ -141,7 +150,7 @@
                 android:padding="16dp"
                 android:background="@drawable/edit_text_background_neutral5"
                 android:hint="@string/nominal"
-                android:contentDescription="Kolom Nominal Pengisian E-Wallet"
+                android:contentDescription="@string/input_nominal_transaksi"
                 android:textSize="@dimen/heading_5"
                 android:inputType="numberDecimal" />
 
@@ -162,7 +171,8 @@
             android:layout_height="wrap_content"
             android:text="@string/masukkan_pin_pembayaran"
             android:textSize="16sp"
-            android:textColor="@color/neutral_09" />
+            android:textColor="@color/neutral_09"
+            android:contentDescription="@string/pin"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etPinTransaksi"
@@ -172,7 +182,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp"
             app:endIconMode="password_toggle"
-            app:endIconContentDescription="Kolom PIN Transaksi"
             app:hintEnabled="false"
             android:textColorHint="@color/et_text_hint">
 
@@ -183,7 +192,8 @@
                 android:background="@drawable/edit_text_background_neutral5"
                 android:hint="@string/pin"
                 android:textSize="@dimen/heading_5"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:contentDescription="@string/masukkan_pin_pembayaran"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -193,9 +203,10 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_background_primary"
         app:backgroundTint="@color/primary_blue"
-        android:text="Lanjut"
+        android:text="@string/lanjut"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="40dp"/>
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/lanjut"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

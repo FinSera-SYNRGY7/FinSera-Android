@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="@id/tvTitle"
         app:layout_constraintBottom_toBottomOf="@id/tvTitle"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="@string/back_button" />
+        android:contentDescription="@string/btn_back" />
 
     <TextView
         android:id="@+id/tvTitle"
@@ -28,7 +28,8 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/e_wallet"/>
 
     <include
         android:id="@+id/btnEWalletGopay"
@@ -39,7 +40,8 @@
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnEWalletDana"/>
+        app:layout_constraintEnd_toStartOf="@id/btnEWalletDana"
+        android:contentDescription="@string/gopay"/>
 
     <include
         android:id="@+id/btnEWalletDana"
@@ -48,7 +50,8 @@
         layout="@layout/ic_e_wallet_dana"
         app:layout_constraintTop_toTopOf="@id/btnEWalletGopay"
         app:layout_constraintStart_toEndOf="@id/btnEWalletGopay"
-        app:layout_constraintEnd_toStartOf="@id/btnEWalletOvo"/>
+        app:layout_constraintEnd_toStartOf="@id/btnEWalletOvo"
+        android:contentDescription="@string/dana"/>
 
     <include
         android:id="@+id/btnEWalletOvo"
@@ -57,7 +60,8 @@
         layout="@layout/ic_e_wallet_ovo"
         app:layout_constraintTop_toTopOf="@id/btnEWalletGopay"
         app:layout_constraintStart_toEndOf="@id/btnEWalletDana"
-        app:layout_constraintEnd_toStartOf="@id/btnEWalletShopeePay"/>
+        app:layout_constraintEnd_toStartOf="@id/btnEWalletShopeePay"
+        android:contentDescription="@string/ovo"/>
 
     <include
         android:id="@+id/btnEWalletShopeePay"
@@ -66,7 +70,8 @@
         layout="@layout/ic_e_wallet_shopeepay"
         app:layout_constraintTop_toTopOf="@id/btnEWalletGopay"
         app:layout_constraintStart_toEndOf="@id/btnEWalletOvo"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/shopeepay"/>
 
     <include
         android:id="@+id/btnEWalletPaypal"
@@ -75,6 +80,7 @@
         layout="@layout/ic_e_wallet_paypal"
         app:layout_constraintTop_toBottomOf="@id/btnEWalletGopay"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="24dp"
+        android:contentDescription="@string/paypal"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

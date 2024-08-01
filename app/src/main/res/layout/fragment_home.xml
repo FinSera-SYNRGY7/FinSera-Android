@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:contentDescription="@string/screen_beranda">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,8 +14,8 @@
             android:id="@+id/iv_topbg_homescreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitXY"
             android:importantForAccessibility="no"
+            android:scaleType="fitXY"
             android:src="@drawable/iv_topbg_homescreen"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,12 +25,12 @@
             android:id="@+id/iv_bca_logo_bg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_bca_background_home"
             android:importantForAccessibility="no"
-            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_bca_background_home"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_topbg_homescreen"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_topbg_homescreen" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -71,12 +72,32 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="6dp"
-                android:text="@string/tv_topbg_account_name"
+                tools:text="@string/tv_topbg_account_name"
                 android:textColor="@color/neutral_02"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/iv_bca_topbar_logo"
                 app:layout_constraintStart_toEndOf="@id/iv_bca_topbar_logo"
                 app:layout_constraintTop_toBottomOf="@id/tv_topbg_hello_placeholder" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/progress_bar_top_name"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="6dp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_bca_topbar_logo"
+                app:layout_constraintStart_toEndOf="@id/iv_bca_topbar_logo"
+                app:layout_constraintTop_toBottomOf="@id/tv_topbg_hello_placeholder"
+                app:shimmer_auto_start="true">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/tv_topbg_account_name"
+                    android:background="@color/neutral_03"
+                    android:textSize="18sp"/>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
             <ImageButton
                 android:id="@+id/btn_logout"
@@ -196,7 +217,7 @@
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:background="@drawable/shadow_bottom_navbar"
-        app:layout_anchor="@id/bottomNavigationView"/>
+        app:layout_anchor="@id/bottomNavigationView" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -212,29 +233,29 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
+            style="@style/Widget.App.BottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:labelVisibilityMode="labeled"
+            android:backgroundTint="@android:color/transparent"
             android:elevation="0dp"
-            style="@style/Widget.App.BottomNavigationView"
             app:itemActiveIndicatorStyle="@android:color/transparent"
             app:itemTextAppearanceActiveBoldEnabled="false"
-            android:backgroundTint="@android:color/transparent"
+            app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_navigation_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
+        style="?attr/floatingActionButtonLargeStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:backgroundTint="@color/primary_blue"
         app:iconTint="@android:color/white"
-        app:srcCompat="@drawable/ic_qris_navbar"
-        app:tint="@android:color/white"
+        app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="50dp"
         app:shapeAppearanceOverlay="@style/SquareFAB"
-        app:layout_anchor="@id/bottomAppBar"
-        style="?attr/floatingActionButtonLargeStyle"/>
+        app:srcCompat="@drawable/ic_qris_navbar"
+        app:tint="@android:color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

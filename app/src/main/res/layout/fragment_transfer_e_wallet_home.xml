@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.topup.ewallet.TransferEWalletHomeFragment"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:contentDescription="@string/screen_e_wallet">
 
     <ImageButton
         android:id="@+id/btnBack"
@@ -16,7 +17,7 @@
         app:layout_constraintTop_toTopOf="@id/tv_title_label"
         app:layout_constraintBottom_toBottomOf="@id/tv_title_label"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="@string/back_button" />
+        android:contentDescription="@string/btn_back" />
 
     <TextView
         android:id="@+id/tv_title_label"
@@ -28,7 +29,8 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/e_wallet"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_history"
@@ -42,7 +44,8 @@
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toStartOf="@id/btn_input_baru"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_label" />
+        app:layout_constraintTop_toBottomOf="@id/tv_title_label"
+        android:contentDescription="@string/daftar_tersimpan"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_input_baru"
@@ -60,7 +63,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_history"
         app:layout_constraintTop_toTopOf="@id/btn_history"
-        app:layout_constraintBottom_toBottomOf="@id/btn_history"/>
+        app:layout_constraintBottom_toBottomOf="@id/btn_history"
+        android:contentDescription="@string/input_baru"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/et_cari_daftar_tersimpan"
@@ -84,7 +88,7 @@
             android:inputType="text"
             android:padding="12dp"
             android:paddingStart="48dp"
-            android:textSize="@dimen/heading_5" />
+            android:textSize="@dimen/heading_5"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,7 +100,7 @@
         app:layout_constraintTop_toTopOf="@id/et_cari_daftar_tersimpan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -106,6 +110,6 @@
         app:layout_constraintTop_toBottomOf="@id/et_cari_daftar_tersimpan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

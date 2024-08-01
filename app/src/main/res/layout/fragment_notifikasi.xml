@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".NotifikasiFragment">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/btn_back"
+        android:src="@drawable/ic_back_button"
+        app:layout_constraintBottom_toBottomOf="@id/tv_title_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_title_label" />
+
+    <TextView
+        android:id="@+id/tv_title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/notifikasi"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/heading_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_all_notif"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/semua"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_blue"
+        android:textSize="@dimen/button_3"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toStartOf="@id/btn_promo"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_label"
+        app:layout_constraintWidth_percent="0.23"
+        app:strokeColor="@color/primary_blue"
+        android:contentDescription="@string/desc_all_notif"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_promo"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/promo"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_blue"
+        android:textSize="@dimen/button_3"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toStartOf="@id/btn_transaksi"
+        app:layout_constraintStart_toEndOf="@id/btn_all_notif"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_label"
+        app:layout_constraintWidth_percent="0.23"
+        app:strokeColor="@color/primary_blue"
+        android:contentDescription="@string/desc_promo"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_transaksi"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/transaksi"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_blue"
+        android:textSize="@dimen/button_3"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toStartOf="@id/btn_info"
+        app:layout_constraintStart_toEndOf="@id/btn_promo"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_label"
+        app:layout_constraintWidth_percent="0.23"
+        app:strokeColor="@color/primary_blue"
+        android:contentDescription="@string/desc_transaction"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_info"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/info"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_blue"
+        android:textSize="@dimen/button_3"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_transaksi"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_label"
+        app:layout_constraintWidth_percent="0.23"
+        app:strokeColor="@color/primary_blue"
+        android:contentDescription="@string/desc_info"/>
+
+    <include
+        android:id="@+id/view_empty"
+        layout="@layout/view_notifikasi_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_all_notif" />
+    <!--End Empty Mutation-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_notifikasi"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_all_notif"
+        app:layout_constraintVertical_bias="0.066"
+        tools:itemCount="3"
+        tools:listitem="@layout/notification_item" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

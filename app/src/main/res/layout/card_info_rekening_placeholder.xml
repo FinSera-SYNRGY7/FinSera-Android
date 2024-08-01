@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:strokeWidth="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:padding="26dp">
+
+        <TextView
+            android:id="@+id/tv_saldo_rekening_card"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@color/neutral_03"
+            android:textColor="@color/neutral_02"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/tv_saldo_card_rekening_home" />
+
+
+        <TextView
+            android:id="@+id/tv_no_rekening_card"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/neutral_03"
+            android:textColor="@color/neutral_02"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_saldo_rekening_card"
+            tools:text="@string/tv_rekening_placeholder" />
+
+
+        <TextView
+            android:id="@+id/tv_nama_nasabah"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/neutral_03"
+            android:textColor="@color/neutral_02"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_no_rekening_card"
+            tools:text="@string/tv_nama_nasabah_placeholder" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

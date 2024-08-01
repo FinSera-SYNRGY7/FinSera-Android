@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/neutral_01"
     android:padding="16dp"
-    tools:context=".ui.fragments.auth.LoginFragment">
+    tools:context=".ui.fragments.auth.LoginFragment"
+    android:contentDescription="@string/screen_login">
 
     <ImageView
         android:id="@+id/iv_bca_logo"
@@ -109,6 +110,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_forgot_password"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 

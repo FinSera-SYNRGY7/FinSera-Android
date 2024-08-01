@@ -1,4 +1,4 @@
-package com.finsera.common.utils
+package com.finsera.common.utils.dialog
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
@@ -6,7 +6,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
-import com.finsera.R
+import com.finsera.common.R
 import java.util.Calendar
 
 class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {

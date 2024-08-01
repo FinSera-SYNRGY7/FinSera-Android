@@ -3,7 +3,5 @@
     <style name="Base.Theme.FinSera" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:fontFamily">@font/calibri_font_family</item>
         <item name="fontFamily">@font/calibri_font_family</item>
-        <item name="android:textColor">@color/neutral_09_night</item>
-        <item name="android:windowBackground">@color/neutral_01_night</item>
     </style>
 </resources>

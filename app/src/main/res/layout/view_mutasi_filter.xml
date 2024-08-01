@@ -16,7 +16,8 @@
         android:textSize="@dimen/body_text1"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/pilih_periode_di_bawah"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_today"
@@ -82,7 +83,8 @@
         android:textSize="@dimen/body_text1"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_today" />
+        app:layout_constraintTop_toBottomOf="@id/btn_today"
+        android:contentDescription="@string/masukkan_jangka_waktu_di_bawah"/>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -96,7 +98,8 @@
         app:layout_constraintTop_toBottomOf="@id/tv_period_of_time_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/cle_end_date"
-        app:layout_constraintHorizontal_chainStyle="spread">
+        app:layout_constraintHorizontal_chainStyle="spread"
+        android:contentDescription="@string/pilih_tanggal_awal">
 
         <TextView
             android:id="@+id/tv_start_date_label"
@@ -140,7 +143,8 @@
     app:layout_constraintStart_toEndOf="@id/cl_start_date"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintBottom_toBottomOf="@id/cl_start_date"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:contentDescription="@string/pilih_tanggal_akhir">
     <TextView
         android:id="@+id/tv_end_date_label"
         android:layout_width="wrap_content"

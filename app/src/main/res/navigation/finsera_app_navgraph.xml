@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_login_pin" >
         <action
             android:id="@+id/action_loginPinFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginPinFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -45,10 +47,15 @@
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"/>
+
         <action
             android:id="@+id/action_splashFragment_to_loginPinFragment"
-            app:destination="@id/loginPinFragment" />
+            app:destination="@id/loginPinFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -57,7 +64,9 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_loginPinFragment"
-            app:destination="@id/loginPinFragment" />
+            app:destination="@id/loginPinFragment"
+            app:popUpTo="@id/finsera_app_navgraph"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/mutasiFragment"
@@ -160,7 +169,7 @@
         android:id="@+id/transferVirtualAccountForm"
         android:name="com.finsera.ui.fragments.transfer.va.TransferVirtualAccountForm"
         android:label="fragment_transfer_virtual_account_form"
-        tools:layout="@layout/fragment_transfer_virtual_account_form" >
+        tools:layout="@layout/fragment_transfer_virtual_account_form">
         <action
             android:id="@+id/action_transferVirtualAccountForm_to_transferVirtualAccountFormKonfirmasi"
             app:destination="@id/transferVirtualAccountFormKonfirmasi" />

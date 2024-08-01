@@ -42,6 +42,8 @@ android {
 
 dependencies {
     implementation(project(":common"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
 
     val lifecycle_version = "2.7.0"
     val koin_version = "3.5.6"
@@ -61,6 +63,7 @@ dependencies {
     // Lifecycle utilities for Compose
     //noinspection GradleDependency
     implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
 
     // Saved state module for ViewModel
     //noinspection GradleDependency

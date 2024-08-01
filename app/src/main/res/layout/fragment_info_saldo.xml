@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".ui.fragments.info.saldo.InfoSaldoFragment">
+    tools:context=".ui.fragments.info.saldo.InfoSaldoFragment"
+    android:contentDescription="@string/screen_informasi_saldo">
 
 
     <TextView
@@ -20,7 +21,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/balance_information"/>
 
 
     <com.google.android.material.card.MaterialCardView
@@ -60,12 +62,30 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/calibri_regular"
-                android:text="@string/rp_10_000_000"
                 android:textColor="@color/neutral_01"
                 android:textSize="@dimen/heading_4"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tv_balance_label"
-                app:layout_constraintTop_toBottomOf="@+id/tv_balance_label" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_balance_label"
+                tools:text="@string/rp_10_000_000" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/pb_balance_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toStartOf="@id/iv_bca_mini_logo"
+                app:layout_constraintStart_toStartOf="@id/tv_balance_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_balance_label"
+                app:shimmer_auto_start="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/neutral_03" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
             <TextView
                 android:id="@+id/tv_account_number_value"
@@ -73,11 +93,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/calibri_font_family"
-                android:text="@string/account_number_value"
                 android:textColor="@color/neutral_01"
                 android:textSize="@dimen/body_text1"
                 app:layout_constraintStart_toStartOf="@+id/tv_balance_value"
-                app:layout_constraintTop_toBottomOf="@+id/tv_balance_value" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_balance_value"
+                tools:text="@string/account_number_value" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/pb_account_number_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toStartOf="@id/iv_bca_mini_logo"
+                app:layout_constraintStart_toStartOf="@+id/tv_balance_value"
+                app:layout_constraintTop_toBottomOf="@+id/tv_balance_value"
+                app:shimmer_auto_start="true">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/neutral_03" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
             <ImageButton
                 android:id="@+id/ib_clipboard"
@@ -92,6 +129,7 @@
 
 
             <ImageView
+                android:id="@+id/iv_bca_mini_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -123,6 +161,7 @@
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/back"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

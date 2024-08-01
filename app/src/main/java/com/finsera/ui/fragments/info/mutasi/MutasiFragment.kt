@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.finsera.R
-import com.finsera.common.utils.DatePickerFragment
+import com.finsera.common.utils.dialog.DatePickerFragment
 import com.finsera.databinding.FragmentMutasiBinding
 
 class MutasiFragment : Fragment(), DatePickerFragment.DialogDateListener{
@@ -56,7 +56,7 @@ class MutasiFragment : Fragment(), DatePickerFragment.DialogDateListener{
     }
 
     private fun showDatePicker(tag: String?) {
-        val newFragment = com.finsera.common.utils.DatePickerFragment()
+        val newFragment = DatePickerFragment()
         newFragment.setDialogDateListener(this)
         newFragment.show(parentFragmentManager, tag)
     }

@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:contentDescription="@string/belum_ada_daftar_tersimpan_empty"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:contentDescription="@string/desc_empty_list">
+
 
     <ImageView
         android:id="@+id/iv_empty_state"

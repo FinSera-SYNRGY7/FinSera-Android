@@ -7,19 +7,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.accessibility.AccessibilityEvent
 import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Toast
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.finsera.R
 import com.finsera.databinding.FragmentLoginPinBinding
-import com.google.android.material.button.MaterialButton
-import kotlinx.coroutines.delay
+import com.finsera.ui.fragments.auth.viewmodels.LoginPinViewModel
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
-class LoginPinFragment : Fragment() {
+class   LoginPinFragment : Fragment() {
     private var _binding: FragmentLoginPinBinding? = null
     private val binding get() = _binding!!
+
+    private val loginPinViewModel : LoginPinViewModel by inject()
 
     private lateinit var etPin1 : EditText
     private lateinit var etPin2 : EditText
@@ -44,6 +49,7 @@ class LoginPinFragment : Fragment() {
 
         init()
         handleCustomKeyboard()
+        observe()
     }
 
     override fun onDestroyView() {
@@ -106,7 +112,6 @@ class LoginPinFragment : Fragment() {
         }
     }
 
-
     private fun EditText.addTextWatcher() {
         this.addTextChangedListener(
             object : TextWatcher {
@@ -151,16 +156,7 @@ class LoginPinFragment : Fragment() {
             filled.visibility = View.VISIBLE
             val getPin = etPin1.text.toString() + etPin2.text.toString() + etPin3.text.toString() +
                     etPin4.text.toString() + etPin5.text.toString() + etPin6.text.toString()
-            if (getPin == "444444") {
-                resetPinFields()
-                binding.tvLoginStatus.text = "Berhasil Login"
-                Toast.makeText(requireActivity(), "Berhasil Login", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_loginPinFragment_to_homeFragment)
-            } else {
-                binding.tvLoginStatus.text = "PIN Salah. Coba lagi."
-                Toast.makeText(requireActivity(), "PIN Salah. Silahkan coba lagi.", Toast.LENGTH_SHORT).show()
-                resetPinFields()
-            }
+            loginPinViewModel.loginWithMpin(getPin)
         }
     }
 
@@ -185,5 +181,32 @@ class LoginPinFragment : Fragment() {
         binding.ivPin6Filled.visibility = View.INVISIBLE
         currentFocusEditText = etPin1
         prevFilledEditText = etPin1
+    }
+
+    private fun observe() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                loginPinViewModel.loginPinScreenUIState.collectLatest { uiState ->
+                    uiState.message?.let { message ->
+                        Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
+                        loginPinViewModel.userMessageShown()
+                    }
+
+                    if(uiState.isPinCorrect) {
+                        if(findNavController().currentDestination?.id == R.id.loginPinFragment) {
+                            findNavController().navigate(R.id.action_loginPinFragment_to_homeFragment)
+                        }
+                    } else {
+                        resetPinFields()
+                    }
+
+                    if(uiState.isLoading) {
+                        binding.tvLoginStatus.text = "Sedang autentikasi PIN..."
+                    } else {
+                        binding.tvLoginStatus.text = "Selamat Datang Kembali"
+                    }
+                }
+            }
+        }
     }
 }

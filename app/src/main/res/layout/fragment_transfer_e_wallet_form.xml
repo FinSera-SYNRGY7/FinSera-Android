@@ -19,14 +19,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back_button"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/btn_back"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Isi E-Wallet"
             android:textSize="24sp"
             android:textColor="@android:color/black"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/tv_title_isi_e_wallet"/>
     </RelativeLayout>
 
     <include
@@ -36,7 +38,8 @@
         layout="@layout/ewallet_form_item"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@id/topmenu"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/gopay"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,9 +54,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Masukkan no.handphone/nama"
+            android:text="@string/tv_no_handphone_atau_nama"
             android:textSize="16sp"
-            android:textColor="@color/neutral_09" />
+            android:textColor="@color/neutral_09"
+            android:contentDescription="@string/tv_desc_input_no_hp_atau_nama"/>
         <EditText
             android:id="@+id/banktujuanEditText"
             android:layout_width="match_parent"
@@ -62,8 +66,9 @@
             android:gravity="center_vertical"
             android:paddingHorizontal="16dp"
             android:layout_marginTop="10dp"
-            android:hint="No. Handphone / Nama"
-            android:singleLine="true" />
+            android:hint="@string/no_handphone_nama"
+            android:singleLine="true"
+            android:contentDescription="@string/input_nomor_handphone_atau_nama"/>
 
     </LinearLayout>
 
@@ -73,9 +78,10 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_background_primary"
         app:backgroundTint="@color/primary_blue"
-        android:text="Lanjut"
+        android:text="@string/lanjut"
         android:textSize="20sp"
         android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="@string/lanjut"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
