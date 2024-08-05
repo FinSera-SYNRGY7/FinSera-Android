@@ -219,4 +219,5 @@
     <string name="desc_input_nomor_rekening">Masukkan nomor rekening tujuan di bawah</string>
     <string name="desc_input_catatan">Input Catatan Opsional di bawah</string>
     <string name="screen_transfer_antarbank_form">Transfer Antar Bank</string>
+    <string name="tv_insert_pin">Masukkan PIN kamu</string>
 </resources>
