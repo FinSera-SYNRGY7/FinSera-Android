@@ -10,9 +10,9 @@
 
     <ImageView
         android:id="@+id/ic_bca_logo_colored"
-        android:layout_width="90dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_bca_labeled_colored_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_finsera_blue"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -230,7 +230,7 @@
         android:id="@+id/tv_masukkan_pin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Masukkan PIN kamu"
+        android:text="@string/tv_insert_pin"
         android:textSize="@dimen/heading_4"
         android:textColor="@color/et_text_hint_2"
         android:textStyle="bold"

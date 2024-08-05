@@ -18,9 +18,9 @@
 
     <ImageView
         android:id="@+id/iv_bca_logo_splash_main"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:src="@drawable/ic_bca_labeled_white_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_finsera_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
