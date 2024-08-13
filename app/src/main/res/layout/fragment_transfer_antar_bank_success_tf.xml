@@ -25,4 +25,5 @@
         layout="@layout/card_transaksi_berhasil_antarbank"
         />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
