@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:importantForAccessibility="no"
     android:padding="@dimen/_16sdp"
     tools:context=".ui.fragments.transfer.antar_bank.TransferAntarBankFormKonfirmasiFragment"
     android:contentDescription="@string/screen_confirm_transaction">
@@ -285,7 +286,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="12dp"
                     app:endIconMode="password_toggle"
-                    app:endIconContentDescription="Kolom PIN Transaksi"
+                    app:endIconContentDescription="Visibilitas PIN"
                     app:hintEnabled="false"
                     android:textColorHint="@color/et_text_hint">
 

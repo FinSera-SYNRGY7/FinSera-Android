@@ -1,11 +1,15 @@
 package com.finsera.presentation.fragments.transfer.antar_bank
 
 import android.os.Bundle
+import android.text.Editable
 import android.text.InputType
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityNodeInfo
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Lifecycle
@@ -49,6 +53,12 @@ class CekRekeningAntarBankFormFragment : Fragment() {
         handleBackButton()
         observer()
         handleNextBtn()
+        setupAccountNumberAccessibility()
+
+        if (!hasAnnouncedScreen) {
+            view?.announceForAccessibility(getString(R.string.screen_pilih_bank))
+            hasAnnouncedScreen = true
+        }
     }
 
     private fun initPilihBankBottomSheet() {
@@ -62,11 +72,7 @@ class CekRekeningAntarBankFormFragment : Fragment() {
 
         binding.etPilihBank.setOnClickListener {
             pilihBankModalBottomSheet.show(childFragmentManager, PilihBankModalBottomSheet.TAG)
-        }
-
-        if (!hasAnnouncedScreen) {
-            view?.announceForAccessibility(getString(R.string.screen_pilih_bank))
-            hasAnnouncedScreen = true
+            view?.announceForAccessibility(getString(R.string.desc_bank_option))
         }
     }
 
@@ -139,5 +145,28 @@ class CekRekeningAntarBankFormFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setupAccountNumberAccessibility() {
+        binding.etNomorRekening.accessibilityDelegate = object : View.AccessibilityDelegate() {
+            override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfo) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                val editText = host as? EditText
+                editText?.text?.let { text ->
+                    info.text = text.toString().map { it.toString() }.joinToString(" ")
+                }
+            }
+        }
+
+        binding.etNomorRekening.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                s?.let {
+                    binding.etNomorRekening.announceForAccessibility(it.toString().map { char -> char.toString() }.joinToString(" "))
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
     }
 }

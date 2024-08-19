@@ -6,6 +6,8 @@
     android:orientation="vertical"
     android:paddingHorizontal="16dp"
     android:backgroundTint="@android:color/white"
+    android:importantForAccessibility="no"
+    android:contentDescription="@string/desc_bank_option"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     tools:context=".fragments.transfer.antar_bank.bottomsheet.PilihBankModalBottomSheet">
@@ -36,6 +38,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_close_bottom_sheet"
+            android:contentDescription="@string/desc_close_bottom_sheet"
             android:layout_centerInParent="true"
             android:layout_alignParentEnd="true"/>
 
@@ -56,7 +59,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/et_textfield_background_2"
-            android:contentDescription="@string/cari_bank"
             android:hint="@string/cari_bank"
             android:inputType="text"
             android:padding="12dp"

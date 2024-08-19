@@ -1,10 +1,14 @@
 package com.finsera.presentation.fragments.transfer.sesama_bank
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityNodeInfo
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Lifecycle
@@ -43,6 +47,7 @@ class CekRekeningSesamaBankFormFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupAccountNumberAccessibility()
         observer()
 
         binding.btnBack.setOnClickListener {
@@ -101,6 +106,29 @@ class CekRekeningSesamaBankFormFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setupAccountNumberAccessibility() {
+        binding.nomorEditText.accessibilityDelegate = object : View.AccessibilityDelegate() {
+            override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfo) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                val editText = host as? EditText
+                editText?.text?.let { text ->
+                    info.text = text.toString().map { it.toString() }.joinToString(" ")
+                }
+            }
+        }
+
+        binding.nomorEditText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                s?.let {
+                    binding.nomorEditText.announceForAccessibility(it.toString().map { char -> char.toString() }.joinToString(" "))
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
     }
 
     override fun onDestroyView() {

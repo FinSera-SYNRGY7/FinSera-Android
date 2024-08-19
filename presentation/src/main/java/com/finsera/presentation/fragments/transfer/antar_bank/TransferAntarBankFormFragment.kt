@@ -40,6 +40,8 @@ class TransferAntarBankFormFragment : Fragment() {
 
     private var saldoRekening: Double? = null
 
+    private var hasAnnouncedScreen = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentTransferAntarBankFormBinding.inflate(inflater, container, false)
         return binding.root
@@ -61,6 +63,12 @@ class TransferAntarBankFormFragment : Fragment() {
         getBundleDataRekening()
         observeDataSaldo()
         setupListeners()
+
+        if (!hasAnnouncedScreen) {
+            val announcement = getString(R.string.screen_form_transfer, namaPemilikRekening)
+            view.announceForAccessibility(announcement)
+            hasAnnouncedScreen = true
+        }
     }
 
     private fun getBundleDataRekening() {
@@ -80,6 +88,8 @@ class TransferAntarBankFormFragment : Fragment() {
             binding.cardInfoRekening.tvNoRekening.text = noRekening
             binding.cardInfoRekening.tvNamaPenerima.text = namaPemilikRekening
             binding.cardInfoRekening.tvNamaBank.text = "Bank $namaBank"
+            noRekening?.let { setAccountNumberContentDescription(it) }
+            updateRecipientInfoAccessibility()
         }
     }
 
@@ -106,7 +116,9 @@ class TransferAntarBankFormFragment : Fragment() {
 
                     if(uiState.isDataSaldoReady) {
                         saldoRekening = uiState.dataSaldo?.amount
-                        binding.cardInfoSaldo.tvSaldoRekening.text = StringBuilder().append("Rp" + CurrencyFormatter.formatCurrency(saldoRekening!!))
+                        val formattedSaldo = "Rp" + CurrencyFormatter.formatCurrency(saldoRekening!!)
+                        binding.cardInfoSaldo.tvSaldoRekening.text = formattedSaldo
+                        updateSaldoAndaAccessibility(formattedSaldo)
                     }
 
                     if(!uiState.hasInternet) {
@@ -170,6 +182,27 @@ class TransferAntarBankFormFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setAccountNumberContentDescription(accountNumber: String) {
+        val spaceDelimitedNumber = accountNumber.map { it.toString() }.joinToString(" ")
+        binding.cardInfoRekening.tvNoRekening.contentDescription = spaceDelimitedNumber
+    }
+
+    private fun updateSaldoAndaAccessibility(formattedSaldo: String) {
+        val fullDescription = getString(R.string.desc_saldo_anda, formattedSaldo)
+        binding.cardInfoSaldo.saldoAndaContainer.contentDescription = fullDescription
+    }
+
+    private fun updateRecipientInfoAccessibility() {
+        val spaceDelimitedNumber = noRekening?.map { it.toString() }?.joinToString(" ") ?: ""
+        val fullDescription = getString(
+            R.string.desc_recipient_info,
+            namaPemilikRekening ?: "",
+            namaBank ?: "",
+            spaceDelimitedNumber
+        )
+        binding.cardInfoRekening.root.contentDescription = fullDescription
     }
 
     override fun onDestroyView() {

@@ -208,8 +208,10 @@ class HomeFragment : Fragment(), TextToSpeech.OnInitListener {
             } else {
                 binding.cardNasabahInfo.tvSaldoRekeningCard.text =
                     getString(R.string.tv_saldo_card_rekening_home)
-                binding.cardNasabahInfo.tvSaldoRekeningCard.contentDescription =
-                    getString(R.string.saldo_disembunyikan)
+                if (isTalkBackEnabled()){
+                    binding.cardNasabahInfo.tvSaldoRekeningCard.contentDescription =
+                        getString(R.string.saldo_disembunyikan)
+                }
                 binding.cardNasabahInfo.tvSaldoRekeningCard.isClickable = false
                 binding.cardNasabahInfo.btnSaldoVisibility.setImageResource(R.drawable.ic_rekening_visibility)
                 binding.cardNasabahInfo.btnSaldoVisibility.contentDescription = getString(R.string.tv_talkback_lihat_saldo)

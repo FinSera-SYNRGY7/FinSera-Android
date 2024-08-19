@@ -34,6 +34,8 @@ class TransferAntarBankFormKonfirmasiFragment : Fragment() {
 
     private var addToDaftarTersimpan: Boolean = false
 
+    private var hasAnnouncedScreen = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentTransferAntarBankFormKonfirmasiBinding.inflate(inflater, container, false)
         return binding.root
@@ -43,6 +45,11 @@ class TransferAntarBankFormKonfirmasiFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupListeners()
         getBundle()
+
+        if (!hasAnnouncedScreen) {
+            view.announceForAccessibility(getString(R.string.screen_confirm_transaction))
+            hasAnnouncedScreen = true
+        }
     }
 
     private fun setupListeners() {
@@ -70,6 +77,8 @@ class TransferAntarBankFormKonfirmasiFragment : Fragment() {
             binding.tvNominalAwal.text = "Rp ${CurrencyFormatter.formatCurrency(nominalTransfer.toInt().toDouble())}"
             binding.tvBiayaAdmin.text = "Rp ${CurrencyFormatter.formatCurrency(biayaAdmin.toDouble())}"
             binding.tvNominalTotal.text = "Rp ${CurrencyFormatter.formatCurrency(nominalTransfer.toInt().toDouble() + biayaAdmin)}"
+
+            setAccessibilityDescriptions()
 
             handleTransfer(nominalTransfer, catatanTransfer)
         }
@@ -121,6 +130,22 @@ class TransferAntarBankFormKonfirmasiFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun formatAccountNumberForAccessibility(accountNumber: String): String {
+        return accountNumber.map { it.toString() }.joinToString(" ")
+    }
+    private fun setAccessibilityDescriptions() {
+        binding.apply {
+            val formattedAccountNumber = formatAccountNumberForAccessibility(tvRekeningTujuan.text.toString())
+            layoutbanktujuan.contentDescription = getString(R.string.bank_tujuan_desc, tvBankTujuan.text)
+            layoutnomorrekening.contentDescription = getString(R.string.rekening_tujuan_desc, formattedAccountNumber)
+            layoutnamapemilikrekening.contentDescription = getString(R.string.nama_penerima_desc, tvNamaPemilikRekeningTujuan.text)
+            layoutcatatan.contentDescription = getString(R.string.catatan_desc, tvCatatanTf.text)
+            layoutnominal.contentDescription = getString(R.string.nominal_transfer_desc, tvNominalAwal.text)
+            layoutbiayaadmin.contentDescription = getString(R.string.biaya_admin_desc, tvBiayaAdmin.text)
+            layoutnominaltotal.contentDescription = getString(R.string.nominal_total_desc, tvNominalTotal.text)
         }
     }
 

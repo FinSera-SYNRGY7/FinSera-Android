@@ -125,7 +125,6 @@ class TransferSesamaBankFormFragment : Fragment() {
                         saldoRekening = uiState.dataSaldo?.amount
                         val formattedSaldo = "Rp" + CurrencyFormatter.formatCurrency(saldoRekening!!)
                         binding.cardInfoSaldo.tvSaldoRekening.text = formattedSaldo
-
                         updateSaldoAndaAccessibility(formattedSaldo)
                     }
 

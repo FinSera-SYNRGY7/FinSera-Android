@@ -208,13 +208,13 @@
     <string name="monolog_promo">Hadiah Berlimpah TopUp Paket Data di Finsera!</string>
     <string name="time_date_promo">11 Juli 2024 14:04</string>
     <string name="caption_promo">Dapatkan Iphone dan tabungan emas dengan topup paket data Telkomsel atau XL</string>
-    <string name="desc_recipient_info">Penerima: %1$s, Bank: %2$s, Account number: %3$s</string>
+    <string name="desc_recipient_info">Penerima: %1$s, Bank: %2$s, Nomor rekening: %3$s</string>
     <string name="desc_all_notif">Pilih filter notifikasi tipe semua</string>
     <string name="desc_promo">Pilih filter notifikasi tipe promo</string>
     <string name="desc_transaction">Pilih filter notifikasi tipe transaksi</string>
     <string name="desc_info">Pilih filter notifikasi tipe info</string>
 
-    <string name="account_info_speech">Saldo rekening anda adalah %1$s dengan nomor rekening %2$s</string>
+    <string name="account_info_speech">Saldo rekening anda adalah %s dengan nomor rekening %s</string>
     <string name="transfer_antar_bank">Transfer Antar Bank</string>
     <string name="screen_e_wallet_list">Pilih tipe E-Wallet</string>
     <string name="screen_confirm_transaction">Konfirmasi Transaksi Anda</string>
@@ -234,6 +234,8 @@
     <string name="biaya_admin_desc">Biaya admin %s</string>
     <string name="nominal_total_desc">Nominal total transfer %s</string>
     <string name="nomor_transaksi_desc">Nomor Transaksi: %s</string>
+    <string name="nama_pengirim_desc">Pengirim: %s</string>
+    <string name="rekening_pengirim_desc">Rekening Pengirim: %s</string>
     <string name="akun_finsera_desc">Nomor Akun Finsera %s</string>
     <string name="bank_tujuan_desc">Bank Tujuan %s</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -262,4 +264,8 @@
     <string name="bagikan">Bagikan</string>
     <string name="desc_input_bank_tujuan">Pilih bank tujuan di bawah</string>
     <string name="screen_pilih_bank">Halaman memilih bank tujuan</string>
+    <string name="desc_create_pin">Buat PIN Anda</string>
+    <string name="tv_create_pin">Create PIN</string>
+    <string name="desc_bank_option">Pilih Opsi Bank di bawah</string>
+    <string name="desc_close_bottom_sheet">Tutup Bottom Sheet</string>
 </resources>

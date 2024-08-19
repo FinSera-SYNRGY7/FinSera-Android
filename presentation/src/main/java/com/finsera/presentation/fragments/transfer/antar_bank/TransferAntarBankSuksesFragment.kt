@@ -95,6 +95,8 @@ class TransferAntarBankSuksesFragment : Fragment() {
         shareButton.setOnClickListener {
             safeShareImageTo()
         }
+
+        setAccessibilityDescriptions()
     }
 
     fun getBitmapFromUiView(context: Context, myView: View) : Bitmap {
@@ -200,6 +202,28 @@ class TransferAntarBankSuksesFragment : Fragment() {
         binding.transferAntarBankBerhasil.apply {
             binding.cardTransaksiBerhasil.root.visibility = View.VISIBLE
             binding.cardTransaksiBerhasilScreenshot.root.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun formatDigitNumberAccessibility(digitNumberTalkback: String): String {
+        return digitNumberTalkback.map { it.toString() }.joinToString(" ")
+    }
+
+    private fun setAccessibilityDescriptions() {
+        binding.cardTransaksiBerhasil.apply {
+            val formattedDigitNumberBankRecipient = formatDigitNumberAccessibility(tvRekeningTujuan.text.toString())
+            val formattedDigitNumberBankAccount = formatDigitNumberAccessibility(tvRekeningPengirim.text.toString())
+            val formattedDigitNumberTransaction = formatDigitNumberAccessibility(tvNomorTransaksi.text.toString())
+            tvDate.contentDescription = getString(R.string.tanggal_transaksi_desc, tvDate.text)
+            tvNominal.contentDescription = getString(R.string.nominal_transfer_desc, tvNominal.text)
+            tvBiayaAdmin.contentDescription = getString(R.string.biaya_admin_desc, tvBiayaAdmin.text)
+            tvNomorTransaksi.contentDescription = getString(R.string.nomor_transaksi_desc, formattedDigitNumberTransaction)
+            tvNamaPengirim.contentDescription = getString(R.string.nama_pengirim_desc, tvNamaPengirim.text)
+            tvRekeningPengirim.contentDescription = getString(R.string.rekening_pengirim_desc, formattedDigitNumberBankAccount)
+            tvBankTujuan.contentDescription = getString(R.string.bank_tujuan_desc, tvBankTujuan.text)
+            tvNamaPenerima.contentDescription = getString(R.string.nama_penerima_desc, tvNamaPenerima.text)
+            tvRekeningTujuan.contentDescription = getString(R.string.rekening_tujuan_desc, formattedDigitNumberBankRecipient)
+            tvCatatan.contentDescription = getString(R.string.catatan_desc, tvCatatan.text)
         }
     }
 

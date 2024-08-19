@@ -100,10 +100,11 @@ class InfoSaldoFragment : Fragment() {
                             binding.tvBalanceValue.text = StringBuilder().append("Rp ")
                                 .append(CurrencyFormatter.formatCurrency(saldo.amount))
                             accountName = saldo.username
+                            updateAccessibilityInfo()
+                            binding.accountInfoContainer.isClickable = false
 
                         } ?: run {
                             showLoadingInfoSaldo()
-                            updateAccessibilityInfo()
                         }
                         uiState.message?.let {message->
                             Log.d("InfoSaldoFragment", message)
