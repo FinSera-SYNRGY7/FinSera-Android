@@ -8,5 +8,6 @@ data class Mutasi(
     val noTransaction: String,
     val transactionDate: String,
     val transactionInformation: String,
-    val transactionType: String
+    val transactionType: String,
+    val destinationBankName: String
 )

@@ -181,15 +181,21 @@ class TransferSesamaBankFormFragment : Fragment() {
                                 putBoolean(Constant.DAFTAR_TERSIMPAN_CHECKED_EXTRA, addToDaftarTersimpan)
                             }
 
-                            if(nominalTransfer.toDouble() > 10000.00) {
-                                if(nominalTransfer.toDouble() < saldoRekening!!) {
-                                    findNavController().navigate(R.id.action_transferSesamaBankFormFragment_to_transferSesamaBankFormKonfirmasiFragment, bundle)
+                            try {
+                                if(nominalTransfer.toInt() > 10000) {
+                                    if(nominalTransfer.toInt().toDouble() < saldoRekening!!) {
+                                        findNavController().navigate(R.id.action_transferSesamaBankFormFragment_to_transferSesamaBankFormKonfirmasiFragment, bundle)
+                                    } else {
+                                        Snackbar.make(requireView(), "Saldo anda tidak mencukupi. Nominal harus lebih kecil atau sama dengan saldo di rekening anda.", Snackbar.LENGTH_SHORT).show()
+                                    }
                                 } else {
-                                    Snackbar.make(requireView(), "Saldo anda tidak mencukupi. Nominal harus lebih kecil atau sama dengan saldo di rekening anda.", Snackbar.LENGTH_SHORT).show()
+                                    Snackbar.make(requireView(), "Nominal transfer harus lebih dari Rp10.000", Snackbar.LENGTH_SHORT).show()
                                 }
-                            } else {
-                                Snackbar.make(requireView(), "Nominal transfer harus lebih dari Rp10.000", Snackbar.LENGTH_SHORT).show()
+                            } catch (e: Exception) {
+                                Snackbar.make(requireView(), "Maksimal transaksi dibatasi yaitu Rp1.000.000.000 per transaksinya", Snackbar.LENGTH_SHORT).show()
+                                binding.etNominal.editableText.clear()
                             }
+
                         }
                     }
                 }

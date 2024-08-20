@@ -1,9 +1,16 @@
 package com.finsera.presentation.fragments.info.mutasi
 
 import android.Manifest
+import android.content.ContentValues
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -75,6 +82,7 @@ class MutasiFragment() : Fragment(), DatePickerFragment.DialogDateListener {
         handleBackButton()
         filterButtonOnClick()
 
+        binding.tvAccountNumberValue.text = mutasiViewModel.userInfo?.second
 
         binding.btnDownload.setOnClickListener {
             requestStoragePermission()
@@ -94,13 +102,15 @@ class MutasiFragment() : Fragment(), DatePickerFragment.DialogDateListener {
                     if (uiState.isLoading) {
                         binding.progressBar.visibility = View.VISIBLE
                         binding.btnBack.isEnabled = false
+                        binding.btnDownload.isEnabled = false
                     } else {
                         binding.progressBar.visibility = View.GONE
                         binding.btnBack.isEnabled = true
+                        binding.btnDownload.isEnabled = true
                     }
 
-                    if (uiState.message != null) {
-                        Snackbar.make(requireView(), uiState.message, Snackbar.LENGTH_SHORT).show()
+                    uiState.message?.let {
+                        Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
                         mutasiViewModel.messageShown()
                     }
 
@@ -117,16 +127,19 @@ class MutasiFragment() : Fragment(), DatePickerFragment.DialogDateListener {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             if(isResultMutasiShowed) {
                 mutasiAdapter.submitList(emptyList())
+                startDate = "" // reset startdate and enddate
+                endDate = ""
                 showFilter()
             } else {
                 findNavController().popBackStack()
             }
         }
 
-
         binding.btnBack.setOnClickListener {
             if(isResultMutasiShowed) {
                 mutasiAdapter.submitList(emptyList())
+                startDate = "" // reset startdate and enddate
+                endDate = ""
                 showFilter()
             } else {
                 findNavController().popBackStack()
@@ -343,19 +356,63 @@ class MutasiFragment() : Fragment(), DatePickerFragment.DialogDateListener {
     private fun saveFileToDisk(body: ResponseBody?) {
         if (body == null) return
 
-        try {
-            val file = File(
-                context?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                "mutasi_${System.currentTimeMillis()}.pdf"
-            )
+        val timestamp = System.currentTimeMillis()
+        val values = ContentValues()
+        var uri: Uri? = null
+        val fileName = "mutasi_${startDate}-${endDate}.pdf"
 
-            var inputStream: InputStream? = null
-            var outputStream: OutputStream? = null
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // Save to Download/Finsera directory for Android 11 and above
+            values.put(MediaStore.Downloads.DISPLAY_NAME, fileName)
+            values.put(MediaStore.Downloads.MIME_TYPE, "application/pdf")
+            values.put(MediaStore.Downloads.DATE_ADDED, timestamp)
+            values.put(MediaStore.Downloads.DATE_MODIFIED, timestamp)
+            values.put(MediaStore.Downloads.RELATIVE_PATH, "Download/" + getString(R.string.app_name))
+            values.put(MediaStore.Downloads.IS_PENDING, true)
+
+            uri = requireActivity().contentResolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values)
+            if (uri != null) {
+                try {
+                    val outputStream = requireActivity().contentResolver.openOutputStream(uri)
+                    if (outputStream != null) {
+                        try {
+                            val inputStream: InputStream = body.byteStream()
+                            val buffer = ByteArray(4096)
+                            var bytesRead: Int
+
+                            while (inputStream.read(buffer).also { bytesRead = it } != -1) {
+                                outputStream.write(buffer, 0, bytesRead)
+                            }
+
+                            outputStream.flush()
+                            inputStream.close()
+                            outputStream.close()
+
+                            values.put(MediaStore.Downloads.IS_PENDING, false)
+                            requireActivity().contentResolver.update(uri, values, null, null)
+
+                            Toast.makeText(requireContext(), "File berhasil disimpan di folder Download/${getString(R.string.app_name)}", Toast.LENGTH_SHORT).show()
+                        } catch (e: Exception) {
+                            Log.e(TAG, "savePdfFile: ", e)
+                            Toast.makeText(requireContext(), "Gagal menyimpan file", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                } catch (e: Exception) {
+                    Log.e(TAG, "savePdfFile: ", e)
+                    Toast.makeText(requireContext(), "Gagal menyimpan file", Toast.LENGTH_SHORT).show()
+                }
+            }
+        } else {
+            // save directly to external storage for Android 10 and below
+            val pdfFolder = File(Environment.getExternalStorageDirectory().toString() + '/' + getString(R.string.app_name))
+            if (!pdfFolder.exists()) {
+                pdfFolder.mkdirs()
+            }
+            val file = File(pdfFolder, fileName)
 
             try {
-                inputStream = body.byteStream()
-                outputStream = FileOutputStream(file)
-
+                val outputStream: OutputStream = FileOutputStream(file)
+                val inputStream: InputStream = body.byteStream()
                 val buffer = ByteArray(4096)
                 var bytesRead: Int
 
@@ -364,21 +421,31 @@ class MutasiFragment() : Fragment(), DatePickerFragment.DialogDateListener {
                 }
 
                 outputStream.flush()
-                // Notify the user of success
-                Toast.makeText(requireContext(), "File berhasil terdownload ${file.absolutePath}", Toast.LENGTH_SHORT).show()
+                inputStream.close()
+                outputStream.close()
+
+                // Notify media scanner about the new file
+                values.put(MediaStore.MediaColumns.DATA, file.absolutePath)
+                uri = requireActivity().contentResolver.insert(MediaStore.Files.getContentUri("external"), values)
+
+                Toast.makeText(requireContext(), "File berhasil disimpan di folder ${file.absolutePath}", Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
-                e.printStackTrace()
-                // Notify the user of error
+                Log.e(TAG, "savePdfFile: ", e)
                 Toast.makeText(requireContext(), "Gagal menyimpan file", Toast.LENGTH_SHORT).show()
-            } finally {
-                inputStream?.close()
-                outputStream?.close()
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            // Notify the user of error
-            Toast.makeText(requireContext(), "Gagal menyimpan file", Toast.LENGTH_SHORT).show()
         }
+
+        triggerShareDialog(uri)
+    }
+
+    private fun triggerShareDialog(uri: Uri?) {
+        val shareIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            // Example: content://com.google.android.apps.photos.contentprovider/...
+            putExtra(Intent.EXTRA_STREAM, uri)
+            type = "application/pdf"
+        }
+        startActivity(Intent.createChooser(shareIntent, null))
     }
 
 }

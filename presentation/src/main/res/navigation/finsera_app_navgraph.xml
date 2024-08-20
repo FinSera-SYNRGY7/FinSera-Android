@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_homeFragment_to_transferVirtualAccountHome"
             app:destination="@id/transferVirtualAccountHome" />
+        <action
+            android:id="@+id/action_homeFragment_to_qrisScanQRFragment"
+            app:destination="@id/qrisScanQRFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -253,4 +256,9 @@
         android:name="com.finsera.presentation.fragments.transfer.va.TransferVirtualAccountSuccessFragment"
         android:label="fragment_transfer_virtual_account_success"
         tools:layout="@layout/fragment_transfer_virtual_account_success" />
+    <fragment
+        android:id="@+id/qrisScanQRFragment"
+        android:name="com.finsera.presentation.fragments.qris.QrisScanQRFragment"
+        android:label="fragment_qris_scan_q_r"
+        tools:layout="@layout/fragment_qris_scan_q_r" />
 </navigation>

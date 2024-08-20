@@ -21,7 +21,7 @@
         android:id="@+id/ic_status_uang"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/ic_uangmasuk_mutasi"
         app:layout_constraintTop_toBottomOf="@id/tv_date"
         app:layout_constraintStart_toStartOf="parent" />
@@ -36,8 +36,25 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="12dp"
         android:textColor="@color/neutral_09"
+        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@id/ic_status_uang"
         app:layout_constraintTop_toTopOf="@id/ic_status_uang"
+        app:layout_constraintEnd_toStartOf="@id/tv_waktu_transaksi"
+        app:layout_constraintBottom_toTopOf="@id/tv_nama_bank"/>
+
+    <TextView
+        android:id="@+id/tv_nama_bank"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="BRI"
+        android:layout_marginTop="4dp"
+        android:textSize="@dimen/_12ssp"
+        android:maxLines="3"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="12dp"
+        android:textColor="@color/neutral_09"
+        app:layout_constraintStart_toEndOf="@id/ic_status_uang"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_mutasi"
         app:layout_constraintEnd_toStartOf="@id/tv_waktu_transaksi"
         app:layout_constraintBottom_toBottomOf="@id/ic_status_uang"/>
 
@@ -63,13 +80,13 @@
         android:textColor="@color/neutral_09"
         app:layout_constraintTop_toBottomOf="@id/tv_nominal_uang"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/tv_detail_mutasi"/>
+        app:layout_constraintBottom_toBottomOf="@id/tv_nama_bank"/>
 
     <View
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="@color/et_text_hint"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toEndOf="@id/ic_status_uang"
         app:layout_constraintTop_toBottomOf="@id/tv_waktu_transaksi"

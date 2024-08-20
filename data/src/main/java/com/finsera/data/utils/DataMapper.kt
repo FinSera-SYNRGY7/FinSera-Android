@@ -66,7 +66,8 @@ object DataMapper {
                     noTransaction = it.noTransaction,
                     transactionDate = it.transactionDate,
                     transactionInformation = it.transactionInformation,
-                    transactionType = it.transactionsType
+                    transactionType = it.transactionsType,
+                    destinationBankName = it.destinationBankName
                 )
             }
         }

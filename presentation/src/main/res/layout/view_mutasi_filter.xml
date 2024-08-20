@@ -196,7 +196,7 @@
         android:padding="16dp"
         android:text="@string/next"
         android:textColor="@color/neutral_01"
-        android:textSize="@dimen/_16ssp"
+        android:textSize="20sp"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

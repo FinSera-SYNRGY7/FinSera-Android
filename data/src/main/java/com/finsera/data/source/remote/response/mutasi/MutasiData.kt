@@ -17,5 +17,7 @@ data class MutasiData(
     @SerializedName("transactionInformation")
     val transactionInformation: String,
     @SerializedName("transactionsType")
-    val transactionsType: String
+    val transactionsType: String,
+    @SerializedName("destinationBankName")
+    val destinationBankName: String
 )

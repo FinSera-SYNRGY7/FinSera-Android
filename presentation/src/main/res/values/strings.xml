@@ -137,7 +137,6 @@
     <string name="kembali_ke_aplikasi">Kembali ke Aplikasi</string>
     <string name="silakan_login_dengan_pin_yang_baru">Silakan login dengan PIN yang baru!</string>
     <string name="pin_berhasil_diubah">PIN Berhasil Diubah</string>
-
     <string name="transaksi_berhasil">Transaksi Berhasil</string>
     <string name="tanggal">Tanggal</string>
     <string name="biaya_admin">Biaya Admin</string>
@@ -172,7 +171,6 @@
     <string name="notifikasi">Notifikasi</string>
     <string name="accessibilitas">Accessibilitas</string>
     <string name="ramadhan_adi">Ramadhan Adi</string>
-
     <string name="tv_title_isi_e_wallet">Isi E-Wallet</string>
     <string name="tv_no_handphone_atau_nama">Masukkan no.handphone/nama</string>
     <string name="desc_input_no_hp_atau_nama">Masukkan nomor handphone atau nama di bawah</string>
@@ -199,7 +197,6 @@
     <string name="screen_virtual_account">Halaman Virtual Account</string>
     <string name="screen_e_wallet">Halaman E-Wallet</string>
     <string name="screen_informasi_saldo">Halaman Informasi Saldo</string>
-
     <string name="semua">Semua</string>
     <string name="promo">Promo</string>
     <string name="transaksi">Transaksi</string>
@@ -213,7 +210,6 @@
     <string name="desc_promo">Pilih filter notifikasi tipe promo</string>
     <string name="desc_transaction">Pilih filter notifikasi tipe transaksi</string>
     <string name="desc_info">Pilih filter notifikasi tipe info</string>
-
     <string name="account_info_speech">Saldo rekening anda adalah %s dengan nomor rekening %s</string>
     <string name="transfer_antar_bank">Transfer Antar Bank</string>
     <string name="screen_e_wallet_list">Pilih tipe E-Wallet</string>
@@ -254,7 +250,6 @@
     <string name="cari_bank">Cari Bank</string>
     <string name="rekening_pengirim">Rekening Pengirim</string>
     <string name="nama_pengirim">Nama Pengirim</string>
-
     <string name="recipient">Penerima</string>
     <string name="tv_talkback_sembunyikan_saldo">Sembunyikan Saldo Rekening Anda</string>
     <string name="account_number_prefix">Nomor Rekening Anda Adalah</string>
@@ -268,4 +263,5 @@
     <string name="tv_create_pin">Create PIN</string>
     <string name="desc_bank_option">Pilih Opsi Bank di bawah</string>
     <string name="desc_close_bottom_sheet">Tutup Bottom Sheet</string>
+    <string name="scan_qr">Scan QR</string>
 </resources>

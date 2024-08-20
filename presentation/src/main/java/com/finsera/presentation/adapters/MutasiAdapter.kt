@@ -29,6 +29,7 @@ class MutasiAdapter() : ListAdapter<Mutasi, MutasiAdapter.MutasiViewHolder>(DIFF
             val formattedTime = formatTimeString(data.transactionDate)
             binding.tvWaktuTransaksi.text = formattedTime
             binding.tvDetailMutasi.text = mutasiDescription(data)
+            binding.tvNamaBank.text = data.destinationBankName
 
             binding.tvWaktuTransaksi.contentDescription = formatTimeForAccessibility(formattedTime)
 

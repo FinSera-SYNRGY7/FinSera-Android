@@ -110,7 +110,24 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
-    implementation("io.github.muddz:quickshot:1.4.0")
-
+    // emv qr-code
     implementation("com.github.phannaly:emv-qr-code:0.0.5")
+
+    // camerax
+    val camerax_version = "1.2.2"
+    implementation("androidx.camera:camera-core:${camerax_version}")
+    implementation("androidx.camera:camera-camera2:${camerax_version}")
+    implementation("androidx.camera:camera-lifecycle:${camerax_version}")
+    implementation("androidx.camera:camera-video:${camerax_version}")
+
+    implementation("androidx.camera:camera-view:${camerax_version}")
+    implementation("androidx.camera:camera-extensions:${camerax_version}")
+
+    // mlkit
+    implementation("com.google.mlkit:barcode-scanning:17.0.0")
+
+    // guava
+    implementation("com.google.guava:guava:33.3.0-android")
+
+
 }

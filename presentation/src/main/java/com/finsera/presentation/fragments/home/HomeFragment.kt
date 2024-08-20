@@ -89,6 +89,11 @@ class HomeFragment : Fragment(), TextToSpeech.OnInitListener {
             findNavController().navigate(R.id.action_homeFragment_to_transferAntarBankHome)
         }
 
+        binding.fab.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_qrisScanQRFragment)
+        }
+
+
         setUpBottomNavBar()
         getInfoSaldo()
         visibilitySaldo()

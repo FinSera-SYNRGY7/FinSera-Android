@@ -118,7 +118,7 @@
                     android:id="@+id/etNominal"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:background="@drawable/edit_text_background_neutral5"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="16dp"
