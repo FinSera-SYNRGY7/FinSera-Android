@@ -93,6 +93,11 @@ class MutasiFragment() : Fragment(), DatePickerFragment.DialogDateListener {
             hasAnnouncedScreen = true
         }
 
+        val accountNumber = mutasiViewModel.userInfo?.second ?: ""
+        binding.tvAccountNumberValue.text = accountNumber
+        val formattedAccountNumber = formatAccountNumberForTalkBack(accountNumber)
+        binding.tvAccountNumberValue.contentDescription = getString(R.string.account_number_label) + " " + formattedAccountNumber
+
     }
 
     private fun observer() {
@@ -446,6 +451,10 @@ class MutasiFragment() : Fragment(), DatePickerFragment.DialogDateListener {
             type = "application/pdf"
         }
         startActivity(Intent.createChooser(shareIntent, null))
+    }
+
+    private fun formatAccountNumberForTalkBack(accountNumber: String): String {
+        return accountNumber.map { it.toString() }.joinToString(" ")
     }
 
 }
